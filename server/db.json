@@ -1,0 +1,15 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Sandhya",
+      "email": "sandhyamaddinala812@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "Adhi",
+      "email": "adhigmail.com"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
