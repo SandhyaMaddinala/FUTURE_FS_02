@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL + "/api/leads";
 
 function App() {
   const [customers, setCustomers] = useState([]);
@@ -16,7 +17,7 @@ function App() {
 
   const fetchCustomers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/leads");
+      const res = await axios.get(API);
       setCustomers(res.data);
     } catch (err) {
       console.error(err);
@@ -40,16 +41,16 @@ function App() {
 
     try {
       if (editId) {
-        await axios.put(`http://localhost:5000/api/leads/${editId}`, {
-          name,
-          email,
-        });
+        await axios.put(`${API}/${editId}`, {
+  name,
+  email,
+});
         setEditId(null);
       } else {
-        await axios.post("http://localhost:5000/api/leads", {
-          name,
-          email,
-        });
+       await axios.post(API, {
+  name,
+  email,
+});
       }
 
       setName("");
@@ -70,7 +71,8 @@ function App() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/leads/${_id}`);
+      await axios.delete(`${API}/${_id}`);
+
       fetchCustomers();
     } catch (err) {
       console.error(err);
